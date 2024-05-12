@@ -24,6 +24,8 @@ model User {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
   profileId     Int      @unique
+  spotifyAccessToken String?  
+  spotifyRefreshToken String?
 }
 
 model Profile {

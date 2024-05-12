@@ -22,7 +22,6 @@ export class UsersRepository {
     return this.instance;
   }
 
-
   async createUser({email, password, firstName, lastName}: CreateUserPayload) {
     return this.db.user.create({
       data: {
@@ -44,4 +43,37 @@ export class UsersRepository {
       },
     });
   }
+
+  // New function to retrieve user with Spotify tokens
+  async getUserWithTokens(userId: number) {
+    return this.db.user.findUnique({
+      where: {
+        id: userId
+      },
+      select: {
+        spotifyAccessToken: true,
+        spotifyRefreshToken: true
+      }
+    });
+  }
+  async updateUserTokens(userId: number, accessToken: string, refreshToken: string) {
+    return this.db.user.update({
+      where: { id: userId },
+      data: {
+        spotifyAccessToken: accessToken,
+        spotifyRefreshToken: refreshToken,
+      },
+    });
+  }
+  async hasUserSpotifyTokens(userId: number) {
+    const user = await this.db.user.findUnique({
+      where: { id: userId },
+      select: {
+        spotifyAccessToken: true,
+        spotifyRefreshToken: true
+      }
+    });
+    return user && user.spotifyAccessToken && user.spotifyRefreshToken;
 }
+}
+

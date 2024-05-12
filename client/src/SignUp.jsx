@@ -12,6 +12,7 @@ export const SignUp = () => {
   const api = useApi();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   async function createUser(e) {
     e.preventDefault();
     const res = await api.post("/users", {
@@ -26,10 +27,11 @@ export const SignUp = () => {
   }
 
   return (
-    <div>
-      <h2>Sign Up</h2>
-      <form className="sign-up-form" onSubmit={createUser}>
+    <div className="max-w-md mx-auto mt-10 p-4 bg-white rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold text-center mb-6">Sign Up</h2>
+      <form className="space-y-4" onSubmit={createUser}>
         <input
+          className="w-full p-2 border border-gray-300 rounded-md"
           placeholder="First name"
           type="text"
           value={firstName}
@@ -37,6 +39,7 @@ export const SignUp = () => {
           onChange={e => setFirstName(e.target.value)}
         />
         <input
+          className="w-full p-2 border border-gray-300 rounded-md"
           placeholder="Last name"
           type="text"
           value={lastName}
@@ -44,6 +47,7 @@ export const SignUp = () => {
           onChange={e => setLastName(e.target.value)}
         />
         <input
+          className="w-full p-2 border border-gray-300 rounded-md"
           placeholder="Email"
           type="email"
           value={email}
@@ -51,6 +55,7 @@ export const SignUp = () => {
           onChange={e => setEmail(e.target.value)}
         />
         <input
+          className="w-full p-2 border border-gray-300 rounded-md"
           placeholder="Password"
           type="password"
           value={password}
@@ -58,8 +63,10 @@ export const SignUp = () => {
           onChange={e => setPassword(e.target.value)}
         />
 
-        <button>Create Account</button>
+        <button type="submit" className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          Create Account
+        </button>
       </form>
     </div>
-  )
+  );
 }

@@ -9,24 +9,25 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const api = useApi();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   async function login(e) {
     e.preventDefault();
-    const {token} = await api.post("/sessions", {
+    const { token } = await api.post("/sessions", {
       email,
       password,
     });
 
     dispatch(setAuthToken(token));
-    navigate("/")
+    navigate("/");
   }
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form className="sign-up-form" onSubmit={login}>
+    <div className="max-w-md mx-auto mt-10 p-4 bg-white rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
+      <form className="space-y-4" onSubmit={login}>
         <input
+          className="w-full p-2 border border-gray-300 rounded-md"
           placeholder="Email"
           type="email"
           value={email}
@@ -34,6 +35,7 @@ export const Login = () => {
           onChange={e => setEmail(e.target.value)}
         />
         <input
+          className="w-full p-2 border border-gray-300 rounded-md"
           placeholder="Password"
           type="password"
           value={password}
@@ -41,8 +43,10 @@ export const Login = () => {
           onChange={e => setPassword(e.target.value)}
         />
 
-        <button>Sign In</button>
+        <button type="submit" className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          Sign In
+        </button>
       </form>
     </div>
-  )
+  );
 }

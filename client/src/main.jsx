@@ -8,7 +8,10 @@ import store from './store/store';
 import { Home } from './Home.jsx';
 import { Login } from './Login.jsx';
 import { SignUp } from './SignUp.jsx';
+import { MusicStatsPage } from './MusicStats.jsx';
+import { SpotifyAuthRedirect } from './SpotifyAuthRedirect.jsx';
 import { Api, ApiContext } from './utils/api.js';
+import { SpotifyLogin } from './SpotifyLogin.jsx';
 
 const router = createHashRouter([
   {
@@ -27,6 +30,17 @@ const router = createHashRouter([
         path: "/sign_up",
         element: <SignUp />
       },
+      {
+        path: "/music_stats",
+        element: <MusicStatsPage/>
+      },
+      {
+        path: "/spotify/auth/spotify",
+        element: <SpotifyAuthRedirect />
+      },
+      { 
+        path: "/spotify_login", 
+        element: <SpotifyLogin /> }
     ]
   }
 ])

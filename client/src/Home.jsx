@@ -3,7 +3,6 @@ import { useApi } from "./utils/use_api";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthToken } from "./store/application_slice";
-import { useCounter } from "./utils/use_counter";
 import { requireLogin } from "./utils/require_login";
 
 export const Home = () => {
@@ -12,11 +11,14 @@ export const Home = () => {
   const api = useApi();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {count, add, subtract} = useCounter();
 
   async function getUser() {
-    const {user} = await api.get("/users/me");
-    setUser(user);
+    try {
+      const { user } = await api.get("/users/me");
+      setUser(user);
+    } catch (error) {
+      console.error("Failed to fetch user data:", error);
+    }
   }
 
   useEffect(() => {
@@ -25,18 +27,22 @@ export const Home = () => {
 
   function logout() {
     dispatch(setAuthToken(null));
+    navigate('/login'); // Redirect to login after logout
   }
 
   return (
-    <div>
-      <h1>I am on the home page!</h1>
-      <div>{user && <h1>Welcome, {user.firstName}</h1>}</div>
-      <button onClick={logout}>Logout</button>
-      <h1>{count}</h1>
-      <div>
-        <button onClick={add}>Increment</button>
-        <button>Decrement</button>
-      </div>
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
+      <h1 className="text-4xl font-bold text-gray-800 mb-3">Home Page</h1>
+      {user && <h2 className="text-2xl text-blue-500">Welcome, {user.firstName}</h2>}
+      <p className="text-lg text-gray-700 max-w-xl text-center mt-4 mb-8">
+        This is a platform where you can analyze your Spotify listening habits and see detailed statistics about your favorite music and artists.
+      </p>
+      <button 
+        onClick={logout}
+        className="px-6 py-2 border rounded-md text-red-600 border-red-600 hover:bg-red-600 hover:text-white transition-colors"
+      >
+        Logout
+      </button>
     </div>
   )
 }
