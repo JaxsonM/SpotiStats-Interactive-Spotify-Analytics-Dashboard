@@ -34,6 +34,7 @@ Install dependencies in both the root and client directories:
 ```bash
 # Root directory
 yarn
+```
 
 # Client directory
 cd client
