@@ -1,5 +1,3 @@
-Sure, here's an updated version of your README that showcases the capabilities of your project for potential employers. This version highlights the functionalities and technologies used in your application, providing a clear picture of what the app does and your technical skills.
-
 ```markdown
 # SpotiStats - Spotify Music Analytics Platform
 
