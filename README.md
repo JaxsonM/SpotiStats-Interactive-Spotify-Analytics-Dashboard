@@ -1,4 +1,3 @@
-```markdown
 # SpotiStats - Spotify Music Analytics Platform
 
 Welcome to SpotiStats, an advanced music analytics platform that integrates with Spotify to provide insights into your listening habits. This project is developed as part of the USU CS 4610 course and serves as a showcase of applying modern web development techniques and technologies.
@@ -39,7 +38,6 @@ yarn
 # Client directory
 cd client
 yarn
-```
 
 ### Environment Setup
 Create a `.env` file in the root directory based on the `.env.example` template. Adjust the environment variables according to your setup.
