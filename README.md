@@ -53,6 +53,7 @@ Run both the server and the client to launch the application:
 ```bash
 # Start the server
 yarn dev
+```
 
 # In a new terminal, start the client
 cd client
@@ -81,6 +82,3 @@ Visit `http://localhost:3000` to access the application.
   ```bash
   yarn seed
   ```
-
-
-```
