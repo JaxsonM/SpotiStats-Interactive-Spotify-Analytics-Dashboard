@@ -1,79 +1,90 @@
-# USU CS 4610 Starter App
-You are welcome to use this app as a starting point for any projects in this course.
+Sure, here's an updated version of your README that showcases the capabilities of your project for potential employers. This version highlights the functionalities and technologies used in your application, providing a clear picture of what the app does and your technical skills.
 
-## Setup
+```markdown
+# SpotiStats - Spotify Music Analytics Platform
+
+Welcome to SpotiStats, an advanced music analytics platform that integrates with Spotify to provide insights into your listening habits. This project is developed as part of the USU CS 4610 course and serves as a showcase of applying modern web development techniques and technologies.
+
+## Project Overview
+
+SpotiStats offers users detailed statistics about their top tracks, artists, and genres over different time periods. It uses Spotify's Web API to fetch user-specific data and provides an interactive and user-friendly interface to explore music preferences and trends.
+
+## Features
+
+- **User Authentication**: Secure login and session management with Spotify accounts.
+- **Music Statistics**: Visualization of top tracks and artists fetched directly from Spotify.
+- **Genre Analysis**: Computes and displays genre percentages to uncover musical preferences.
+- **Responsive Design**: Optimized for a variety of devices using Tailwind CSS.
+
+## Technologies Used
+
+- **React**: Frontend library for building the user interface.
+- **Express**: Backend framework for handling API requests.
+- **Prisma**: ORM for database management.
+- **Spotify Web API**: Integration for fetching user-related data.
+- **Docker**: Containerization of the database for easy setup and deployment.
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development.
+
+## Setup Instructions
+
 ### Prerequisites
-- node
-- yarn (optional)
-- docker
+- Node.js
+- Yarn or npm
+- Docker
 
-### Install dependencies
-In the root of the project run
-
+### Install Dependencies
+Install dependencies in both the root and client directories:
 ```bash
+# Root directory
 yarn
-# npm install
+
+# Client directory
+cd client
+yarn
 ```
 
-In the `client` folder run
-```bash
-yarn
-# npm install
-```
+### Environment Setup
+Create a `.env` file in the root directory based on the `.env.example` template. Adjust the environment variables according to your setup.
 
-### Create .env file
-Create a new file called `.env` in the root of the project and copy the contents of `.env.example` into it.
-Change the values of the variables to fit your application.
-
-### Setup the database
-In the root of the project run
+### Database Setup
+Use Docker to set up and run the database:
 ```bash
 docker compose up -d
-# -d starts the container in the background
 ```
 
-## Running the application
-In the root of the project run
+## Running the Application
+Run both the server and the client to launch the application:
 ```bash
+# Start the server
 yarn dev
-# npm run dev
-```
 
-Open and new terminal tab and navigate to the `client` folder and run
-```bash
+# In a new terminal, start the client
+cd client
 yarn dev
-# npm run dev
 ```
+Visit `http://localhost:3000` to access the application.
 
-Visit your application at `http://localhost:3000` (or whatever port you specified in your `.env` file)
+## Development Utilities
 
-NOTE: YOU MUST BE RUNNING BOTH THE CLIENT AND SERVER
+- **Database Migrations**: Manage database schema changes:
+  ```bash
+  yarn migrate-dev
+  ```
 
-## Other Useful Commands
-### Generate and run migrations
-```bash
-yarn migrate-dev
-# npm run migrate-dev
-```
+- **Prisma Studio**: Inspect the database and manage data:
+  ```bash
+  yarn console
+  ```
 
-### Run prisma console
-```bash
-yarn console
-# npm run console
-```
+- **Database Reset**: Reset and re-seed the database:
+  ```bash
+  yarn migrate-reset
+  ```
 
-### Reset the database
-This command deletes all data from the database and recreates all of the tables from the existing migrations.
+- **Seeding the Database**: Populate the database with initial data:
+  ```bash
+  yarn seed
+  ```
 
-```bash
-yarn migrate-reset
-# npm run migrate-reset
-```
 
-### Seed the Database
-Seed script is found in `prisma/seeds.ts`. Update that script to add default data to your database - Note: seeds should be idempotent... this means that you should be able to run the seeds multiple times and the database should be in the same state regardless of whether its the first or 100th time you run it.
-
-```bash
-yarn seed
-# npm run seed
 ```
